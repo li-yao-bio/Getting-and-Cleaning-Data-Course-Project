@@ -3,6 +3,7 @@ This code book summarizes the resulting data for Course Project: Getting and Cle
 
 ##Factors
 - subjectId
+ levels: 1~30
 - activityId
  - "WALKING"
  - "WALKING_UPSTAIRS"
