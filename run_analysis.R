@@ -1,8 +1,13 @@
 library(reshape2)
-#download file
-download.file('https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip', 'rawdata.zip')
-#unzip file
-unzip('rawdata.zip')
+#if the Samsung data is not in your working directory
+#downlaod and unzip
+if(!file.exists('UCI HAR Dataset')){
+  #download file
+  download.file('https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip', 'rawdata.zip')
+  #unzip file
+  unzip('rawdata.zip')
+}
+
 #load raw dataframe
 features      = read.table('UCI HAR Dataset/features.txt',header=FALSE)
 activityType  = read.table('UCI HAR Dataset/activity_labels.txt',header=FALSE)
@@ -27,7 +32,7 @@ testData = cbind(subjectTest, yTest, xTest)
 
 #merges the training and the test sets to create one data set
 df = rbind(trainingData,testData)
-write.table(df, file='refined.tab', quote = FALSE, sep = '\t', row.names = FALSE)
+#write.table(df, file='refined.tab', quote = FALSE, sep = '\t', row.names = FALSE)
 
 #extracts only the measurements on the mean and standard deviation for each measurement.
 #build features to be extracted
